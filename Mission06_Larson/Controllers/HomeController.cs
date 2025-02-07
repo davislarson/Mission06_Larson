@@ -6,26 +6,34 @@ namespace Mission06_Larson.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private MovieFileContext _context;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(MovieFileContext context) // Constructor
     {
-        _logger = logger;
+        _context = context;
     }
-
     public IActionResult Index()
     {
         return View();
     }
 
-    public IActionResult Privacy()
+    public IActionResult About()
+    {
+        return View("GetToKnowJoel");
+    }
+
+    public IActionResult MovieFile()
     {
         return View();
     }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
+    [HttpPost]
+    public IActionResult MovieFile(Movie movie)
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        _context.Movies.Add(movie);
+        _context.SaveChanges();
+        
+        return View("Confirmation", movie);
     }
+    
 }
