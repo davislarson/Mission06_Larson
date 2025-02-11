@@ -1,48 +1,64 @@
 @* This will be the form to add a record to the movie database *@
 @model Movie
 
-<h1>Enter a new movie to the Database</h1>
+<h1>Enter a new movie to the database</h1>
+<div class="container mt-4">
+    <form method="post" class="p-4 shadow-lg rounded bg-light">
+        <h2 class="text-center mb-4">Movie Entry Form</h2>
 
-<form method="post">
-    <label asp-for="Category">Category (Required):</label>
-    <input asp-for="Category">
-    <br><br>
+        <div class="mb-3">
+            <label asp-for="Category" class="form-label">Category/Genre (Required):</label>
+            <input asp-for="Category" class="form-control" required>
+        </div>
 
-    <label asp-for="Title" >Title (Required):</label>
-    <input asp-for="Title">
-    <br><br>
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label">Title (Required):</label>
+            <input asp-for="Title" class="form-control" required>
+        </div>
 
-    <label asp-for="YearReleased">Year Released (Required):</label>
-    <input asp-for="YearReleased">
-    <br><br>
+        <div class="mb-3">
+            <label asp-for="YearReleased" class="form-label">Year Released (Required):</label>
+            <input asp-for="YearReleased" type="number" class="form-control" required>
+        </div>
 
-    <label asp-for="Director">Director (Required):</label>
-    <input asp-for="Director" >
-    <br><br>
+        <div class="mb-3">
+            <label asp-for="Director" class="form-label">Director (Required):</label>
+            <input asp-for="Director" class="form-control" required>
+        </div>
 
-    <label asp-for="Rating">Rating (Required):</label>
-    <select asp-for="Rating">
-        <option value="G">G</option>
-        <option value="PG">PG</option>
-        <option value="PG-13">PG-13</option>
-        <option value="R">R</option>
-    </select>
-    <br><br>
+        <div class="mb-3">
+            <label asp-for="Rating" class="form-label">Rating (Required):</label>
+            <select asp-for="Rating" class="form-select" required>
+                <option value="G">G</option>
+                <option value="PG">PG</option>
+                <option value="PG-13">PG-13</option>
+                <option value="R">R</option>
+            </select>
+        </div>
 
-    <label asp-for="IsEdited">Edited:</label>
-    <input asp-for="IsEdited" type="radio" value="true" id="edited-yes">
-    <label for="edited-yes">Yes</label>
-    <input asp-for="IsEdited" type="radio" value="false" id="edited-no">
-    <label for="edited-no">No</label>
-    <br><br>
+        <div class="mb-3">
+            <label class="form-label">Edited:</label>
+            <div class="form-check">
+                <input asp-for="IsEdited" type="radio" value="true" id="edited-yes" class="form-check-input">
+                <label for="edited-yes" class="form-check-label">Yes</label>
+            </div>
+            <div class="form-check">
+                <input asp-for="IsEdited" type="radio" value="false" id="edited-no" class="form-check-input">
+                <label for="edited-no" class="form-check-label">No</label>
+            </div>
+        </div>
 
-    <label asp-for="LentTo">Lent To:</label>
-    <input asp-for="LentTo">
-    <br><br>
+        <div class="mb-3">
+            <label asp-for="LentTo" class="form-label">Lent To:</label>
+            <input asp-for="LentTo" class="form-control" value="">
+        </div>
 
-    <label asp-for="Notes">Notes (Max 25 characters):</label>
-    <input asp-for="Notes">
-    <br><br>
-    
-    <button type="submit">Submit</button>
-</form>
+        <div class="mb-3">
+            <label asp-for="Notes" class="form-label">Notes (Max 25 characters):</label>
+            <input asp-for="Notes" class="form-control" maxlength="25" value="">
+        </div>
+
+        <button type="submit" class="btn btn-outline-dark w-100">Submit</button>
+    </form>
+</div>
+<br><br><br><br>
