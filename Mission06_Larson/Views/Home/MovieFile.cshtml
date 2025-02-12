@@ -5,17 +5,17 @@
 <div class="container mt-4">
     <form method="post" class="p-4 shadow-lg rounded bg-light">
         <h2 class="text-center mb-4">Movie Entry Form</h2>
-
-        <div class="mb-3">
-            <label asp-for="Category" class="form-label">Category/Genre (Required):</label>
-            <input asp-for="Category" class="form-control" required>
-        </div>
-
+        
         <div class="mb-3">
             <label asp-for="Title" class="form-label">Title (Required):</label>
             <input asp-for="Title" class="form-control" required>
         </div>
-
+        
+        <div class="mb-3">
+            <label asp-for="Category" class="form-label">Category/Genre (Required):</label>
+            <input asp-for="Category" class="form-control" required>
+        </div>
+        
         <div class="mb-3">
             <label asp-for="YearReleased" class="form-label">Year Released (Required):</label>
             <input asp-for="YearReleased" type="number" class="form-control" required>
