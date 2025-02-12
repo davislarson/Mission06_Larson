@@ -16,17 +16,20 @@ public class HomeController : Controller
     {
         return View();
     }
-
+    
+    // About page route
     public IActionResult About()
     {
         return View("GetToKnowJoel");
     }
-
+    
+    // Movie form route
     public IActionResult MovieFile()
     {
         return View();
     }
-
+    
+    // Save movie form to the database route
     [HttpPost]
     public IActionResult MovieFile(Movie movie)
     {
