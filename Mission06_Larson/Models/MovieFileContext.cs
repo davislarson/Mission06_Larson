@@ -10,4 +10,6 @@ public class MovieFileContext : DbContext
     
     // Allows for additions into a Movie table
     public DbSet<Movie> Movies { get; set; }
+    
+    public DbSet<Category> Categories { get; set; }
 }
