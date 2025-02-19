@@ -5,57 +5,86 @@
 <div class="container mt-4">
     <form method="post" class="p-4 shadow-lg rounded bg-light">
         <h2 class="text-center mb-4">Movie Entry Form</h2>
+        <p><span style="color: red;">*</span>Required fields</p>
+
+        <input type="hidden" asp-for="MovieID" />
         
         <div class="mb-3">
-            <label asp-for="Title" class="form-label">Title (Required):</label>
+            <label asp-for="Title" class="form-label">Title<span style="color: red;">*</span>:</label>
             <input asp-for="Title" class="form-control" required>
+            <span asp-validation-for="Title" class="text-danger"></span>
         </div>
         
         <div class="mb-3">
-            <label asp-for="Category" class="form-label">Category/Genre (Required):</label>
-            <input asp-for="Category" class="form-control" required>
+            <label asp-for="CategoryId" class="form-label">Category/Genre:</label>
+            <select asp-for="CategoryId" class="form-select">
+                <option value="" selected>Choose a category</option>
+                @foreach (Category c in ViewBag.Categories)
+                {
+                    <option value="@c.CategoryId">@c.CategoryName</option>
+                }
+            </select>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
         </div>
         
         <div class="mb-3">
-            <label asp-for="YearReleased" class="form-label">Year Released (Required):</label>
-            <input asp-for="YearReleased" type="number" class="form-control" required>
+            <label asp-for="Year" class="form-label">Year Released<span style="color: red;">*</span>:</label>
+            <input asp-for="Year" type="number" class="form-control" required>
+            <span asp-validation-for="Year" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
-            <label asp-for="Director" class="form-label">Director (Required):</label>
-            <input asp-for="Director" class="form-control" required>
+            <label asp-for="Director" class="form-label">Director:</label>
+            <input asp-for="Director" class="form-control">
+            <span asp-validation-for="Director" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
-            <label asp-for="Rating" class="form-label">Rating (Required):</label>
-            <select asp-for="Rating" class="form-select" required>
+            <label asp-for="Rating" class="form-label">Rating:</label>
+            <select asp-for="Rating" class="form-select">
+                <option value="">Choose a Rating</option>
                 <option value="G">G</option>
                 <option value="PG">PG</option>
                 <option value="PG-13">PG-13</option>
                 <option value="R">R</option>
+                <option value="UR">UR</option>
+                <option value="NR">NR</option>
+                <option value="TV-G">TV-G</option>
+                <option value="TV-PG">TV-PG</option>
+                <option value="TV-14">TV-14</option>
+                <option value="TV-MA">TV-MA</option>
             </select>
+            <span asp-validation-for="Rating" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Edited:</label>
             <div class="form-check">
-                <input asp-for="IsEdited" type="radio" value="true" id="edited-yes" class="form-check-input">
-                <label for="edited-yes" class="form-check-label">Yes</label>
+                <label asp-for="Edited" class="form-check-label">Edited: </label>
+                <input asp-for="Edited" type="checkbox" class="form-check-input">
             </div>
-            <div class="form-check">
-                <input asp-for="IsEdited" type="radio" value="false" id="edited-no" class="form-check-input">
-                <label for="edited-no" class="form-check-label">No</label>
-            </div>
+            <span asp-validation-for="Edited" class="text-danger"></span>
+
         </div>
 
         <div class="mb-3">
             <label asp-for="LentTo" class="form-label">Lent To:</label>
-            <input asp-for="LentTo" class="form-control" value="">
+            <input asp-for="LentTo" class="form-control">
+            <span asp-validation-for="LentTo" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
+            <div class="form-check">
+                <label asp-for="CopiedToPlex" class="form-check-label">Copied To Plex: </label>
+                <input asp-for="CopiedToPlex" type="checkbox" class="form-check-input">
+            </div>
+            <span asp-validation-for="CopiedToPlex" class="text-danger"></span>
+        </div>
+
+
+        <div class="mb-3">
             <label asp-for="Notes" class="form-label">Notes (Max 25 characters):</label>
-            <input asp-for="Notes" class="form-control" maxlength="25" value="">
+            <input asp-for="Notes" class="form-control" maxlength="25">
+            <span asp-validation-for="Notes" class="text-danger"></span>
         </div>
 
         <button type="submit" class="btn btn-outline-dark w-100">Submit</button>
